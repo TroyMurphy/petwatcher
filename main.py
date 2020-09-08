@@ -1,4 +1,5 @@
 import requests
+import datetime
 import json
 from bs4 import BeautifulSoup
 from DogResult import DogResult
@@ -46,6 +47,7 @@ def send_email(contents):
 	#for dog in contents:
 	#	print(dog.link)
 	send_mail_using_gmail(contents)
+	print("Email sent at " + str(datetime.datetime.now()))
 
 if __name__ == "__main__":
 	main()
