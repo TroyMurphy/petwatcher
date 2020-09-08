@@ -21,7 +21,7 @@ def main():
 		is_dog_active = job_elem.find('div', string=lambda text:text and 'Pending Application' in text) is None
 		if is_dog_active:
 			dog_link = job_elem.find('a')['href']
-			dog_image = job_elem.find('img')['src']
+			dog_image = job_elem.find('img', class_='attachment-medium')['src']
 			activeDogs.append(DogResult(dog_name, dog_link, dog_image))
 	
 	savedDogs = get_saved_dogs()
