@@ -1,4 +1,5 @@
 import requests
+import datetime
 import json
 from bs4 import BeautifulSoup
 from DogResult import DogResult
@@ -27,7 +28,17 @@ def main():
             dog_image = job_elem.find('img')['src']
             activeDogs.append(DogResult(dog_name, dog_link, dog_image))
 
-    savedDogs = get_saved_dogs()
+        for job_elem in job_elems:
+            dog_name = job_elem.find('h2', class_="profile-name").text
+            is_dog_active = job_elem.find(
+                'div', string=lambda text: text and 'Pending Application' in text) is None
+            if is_dog_active:
+                dog_link = job_elem.find('a')['href']
+                dog_image = job_elem.find(
+                    'img', class_='attachment-medium')['src']
+                activeDogs.append(DogResult(dog_name, dog_link, dog_image))
+
+        savedDogs = get_saved_dogs()
 
     newlyAddedDogs = [x for x in activeDogs if x.name not in savedDogs]
     if (len(newlyAddedDogs)):
@@ -49,11 +60,21 @@ def write_saved_dogs(dog_names):
 
 
 def send_email(contents):
-    #print("{0} new dogs have been added to AARCS!".format(len(contents)))
-    # for dog in contents:
-    #	print(dog.link)
-    send_mail_using_gmail(contents)
 
+
+<< << << < HEAD
+#print("{0} new dogs have been added to AARCS!".format(len(contents)))
+# for dog in contents:
+#	print(dog.link)
+send_mail_using_gmail(contents)
+
+== == == =
+#print("{0} new dogs have been added to AARCS!".format(len(contents)))
+# for dog in contents:
+#	print(dog.link)
+send_mail_using_gmail(contents)
+print("Email sent at " + str(datetime.datetime.now()))
+>>>>>> > 28b0556e86b1a5f9508ee7d9e02769db14b61657
 
 if __name__ == "__main__":
     main()
