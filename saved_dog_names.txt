@@ -1,1 +1,1 @@
-["Tripp", "Gizmo", "Schneider", "Dzazi"]
+["Roper", "Zorana", "Kanti", "Xona", "Gussy", "Chandler", "Cuko", "Finian", "Blackie", "Kelly", "Lupin", "Xander", "Missy", "Sanderson", "Brawnie", "Finnegan", "Marcus", "Violet"]
